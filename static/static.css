@@ -1,0 +1,254 @@
+.title-cont {
+    background-color: #000;
+}
+.tabs {
+    font-size: 12px;
+    background-color: #87241e;
+    height:20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+li {
+    display: inline;
+    box-shadow: 2px 2px 1px 1px rgba(255,255,255,.1);
+    border: 1px solid black;
+    
+}
+ul.li {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+}
+li.li {
+    display:list-item;
+    box-shadow: 2px 2px 1px 1px rgba(255,255,255,.1);
+    border: 1px solid black;
+}
+a {
+    color: white;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.container {
+    outline: 4px solid;
+    outline-style:solid;
+    outline-width:4px;
+    outline-color: #000;
+    height: 500px;
+    width: 304px;
+    position: relative;
+    font-family: "Bloomberg-FixedU_B";
+    background-color: #000;
+    color: #ee9d28;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(100, 100, 100, .5);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #818B99;
+    border: 3px solid transparent;
+    border-radius: 9px;
+    background-clip: content-box;
+}
+body {
+    margin: 4px;
+    background-color: #656365;
+    height: 500px;
+    width: 300px;
+}
+
+@font-face {
+    font-family: Bloomberg-FixedU_B;
+    src: url('Bloomberg-FixedU_B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.titlecont {
+    top:0;
+    left:0;
+}
+.title {
+    top: 0;
+    left: 0;
+    font-family: "Bloomberg-FixedU_B";
+    font-size: 24px;
+    font-weight: bold;
+    color: #e5e5e5;
+}
+.ticker{
+    top:0;
+    height:30px;
+}
+
+.chat{
+     height:350px;
+    width:300px;
+    position:absolute;
+}
+.message-container {
+    height: 35px;
+    width: 300px;
+    bottom: 0;
+    position: absolute;
+    background-color: #D4D4D4;
+    outline-style: solid;
+    outline-width: 3px;
+    outline-color: #000;
+}
+.message {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    left: 0;
+    color: #e5e5e5;
+    background-color: #ee9d28;
+}
+.send-button {
+    background-color: #000;
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    right: 0;
+    vertical-align: auto;
+}
+
+#marquee-cont {
+    background: #f4f4f4;
+    margin-top:5px;
+  }
+  #marquee-cont marquee {
+    margin-top: 5px;
+  }
+#marquee-news {
+    background: #6A9955;
+    padding: 5px;
+}
+#ticker-title {
+    border: none;
+    background: #656365;
+    color: white;
+}
+  #ticker-title:focus{
+    outline:none;
+  }
+
+
+
+
+/* Chat Page */
+
+.chat-container {
+    max-width: 300px;
+    background: #000;
+    overflow: auto;
+}
+
+
+
+
+.chat-main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.chat-messages {
+    overflow-y: scroll;
+    height: 380px;
+    width: 300px;
+    
+}
+
+
+
+    .chat-messages .message {
+        background-color: var(--light-color);
+        height: auto;
+        overflow: auto;
+        overflow-wrap:anywhere;
+        position: relative;
+    }
+
+    .chat-messages .message .meta {
+        font-size: 15px;
+        font-weight: bold;
+        color: var(--dark-color-b);
+        opacity: 0.7;
+    }
+
+        .chat-messages .message .meta span {
+            color: #777;
+        }
+
+.chat-form-container {
+    background-color: var(--dark-color-a);
+}
+
+    .chat-form-container form {
+        display: flex;
+    }
+
+
+@media (max-width: 300px) {
+    .chat-main {
+        display: block;
+    }
+}
+
+#username {
+    background-color: #ee9d28;
+    font-size:20px;
+}
+#password {
+    background-color: #ee9d28;
+    font-size: 20px;
+}
+#room {
+    background-color: #ee9d28;
+}
+button {
+    background-color: #777;
+    width:90px;
+    position:relative;
+    top:25%;
+    
+}
+input {
+    background-color: #ee9d28;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    overflow-y: scroll;
+    border: none;
+    outline: none;
+}
+@-webkit-keyframes autofill {
+    0%,100% {
+        color: #ee9d28;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-delay: 3s; /* Safari support - any positive time runs instantly */
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+.usersList-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
