@@ -1,24 +1,38 @@
 {
-  "main": "server.js",
+  "main": "../js/server.js",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "debug": "nodemon --inspect server.js"
+    "debug": "nodemon --inspect ../js/server.js"
   },
-  "type": "module",
   "dependencies": {
     "app-module-path": "^2.2.0",
     "axios": "^0.25.0",
     "express": "^4.17.2",
+    "greenlock-express": "^4.0.3",
     "moment": "^2.29.1",
     "node-fetch": "^3.2.0",
     "request": "^2.88.2",
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
+    "ws": "^8.4.2",
     "yahoo-finance": "^0.3.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
     "parcel-bundler": "^1.12.5"
-  }
+  },
+  "name": "chromeextension",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jc22dora/ChromeExtension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jc22dora/ChromeExtension/issues"
+  },
+  "homepage": "https://github.com/jc22dora/ChromeExtension#readme",
+  "description": ""
 }

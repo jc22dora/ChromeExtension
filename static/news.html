@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RobinHood Terminal</title>
+    <link rel="stylesheet" href="../static/static.css">
+</head>
+<body>
+    
+
+    <div class=container>
+        <div class="title-cont">
+            <div class="title">RobinHood Terminal</div>
+        </div>
+        <div class="tabs">
+            <ul>
+                <li><a href="../static/chat.html">Home</a></li>
+                <li><a href="../static/news.html">News</a></li>
+                <li><a href="../static/contact.html">Contact</a></li>
+                <li><a href="../static/about.html">About</a></li>
+            </ul>
+        </div>
+        <div class=ticker>
+
+            <div id="marquee-cont">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="50px" style="background: #656365">
+                            <button id="ticker-title">Stocks:</button>
+                        </td>
+                        <td id="marquee">
+                            <marquee onmouseover="this.stop();" onmouseout="this.start();" id='scroll'>
+                            </marquee>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <script src="../js/ticker.js"></script>
+        </div>
+        <div class="usersListContainer">
+            <form id="usersList-form">
+                <button type="submit">refresh</button>
+            </form>
+            <div class="usersList-grid">
+                <div class="user">testUser</div>
+            </div>
+            
+        </div>
+
+
+
+</body>
+</html>
