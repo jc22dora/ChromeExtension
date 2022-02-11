@@ -14,49 +14,53 @@ chrome.runtime.onMessage.addListener( (msg, sender, sendResponse) => {
         username = msg.username;
         room = msg.room;
         console.log('background set login');
-        socket.send(msg);
-
         
+        socket.send(msg);
+       
+        
+    }
+    if (msg.type === 'get-login') {
+        console.log('background received login get request:');
+        sendResponse(username, room);
+
+
+    }
+    if (msg.type === 'message') {
+        //displayMessage(formatMessage(msg.username, msg.text));
+        sendResponse('background received');
+        console.log(msg);
+        //socket.send(msg.text);
+        
+        socket.send(JSON.stringify(msg));
     }
 });
 
-document.getElementById('send-button').addEventListener('click',
-    function () {
-        event.preventDefault();
-        console.log('backround received message ');
-        let msg = {
-            username: username,
-            text: document.getElementById('msg').value,
-            room: room
-        };
-        //format
-        let message = formatMessage(socket.id, msg.text);
-        //console.log(msg.username);
-        //displayMessage(message);
-        socket.send(message.text);
-    });
 
 socket.addEventListener("open", () => {
     console.log('background is connected');
 
 });
-socket.addEventListener("message", data => {
-    data.data.text().then(x => displayMessage(formatMessage(username, x)));
-    //format
-    
-    ;
-})
+socket.addEventListener('message', event => {
+    //displayMessage(formatMessage('john', 'test'));
+    console.log('background received message from server');
+    console.log(JSON.parse(event['data']));
+    const str = event.data.toString();
+    console.log(str);
 
-function formatMessage(username, text) {
-    return {
-        username, text, time: new Date().toLocaleString('en-GB')
-    }
-}
-function displayMessage(message) {
-    const div = document.createElement('div');
-    div.classList.add('message');
-    div.innerHTML = ' <p class="meta">' + message.username + '<span>' + message.time + '</span></p><p class="text"> ' +
-        message.text +
-        '</p > ';
-    document.querySelector('.chat-messages').appendChild(div);
-}
+    let codes = JSON.parse(event['data']);
+    let json = String.fromCharCode.apply(null, codes['data']);
+    json = JSON.parse(json);
+    console.log(json["text"]);
+    // convert to 
+    
+    //send back to chat.js
+    chrome.runtime.sendMessage({ type: 'message-from-server', username: json["username"], room: event.data.room, text: json["text"]}, (msg) => {
+        console.log(`background.....${msg}`)
+    });
+    //get response from chat.js
+
+    
+    //data.data.text().then(x => displayMessage(formatMessage(username, x)));
+    //forma
+});
+

@@ -5,79 +5,78 @@
     <link rel="stylesheet" href="../static/static.css">
     <!--<script type="module" src="../js/popup.js"></script> -->
     <script src="../js/utils/users.js" type="module"></script>
-    <!--<script type="module" src="../js/chat.js"></script> -->
-    <script type="module" src="../js/background.js"></script>
+    
+    <!--<script type="module" src="../js/background.js"></script>-->
 </head>
-        <body>
+<body>
 
 
-            <div class=container>
-                <div class="title-cont">
-                    <div class="title">RobinHood Terminal</div>
-                </div>
-                <div class="tabs">
-                    <ul>
-                        <li><a href="../static/chat.html">Home</a></li>
-                        <li><a href="../static/news.html">News</a></li>
-                        <li><a href="../static/contact.html">Contact</a></li>
-                        <li><a href="../static/about.html">About</a></li>
-                    </ul>
-                </div>
-                <div class=ticker>
+    <div class=container>
+        <div class="title-cont">
+            <div class="title">RobinHood Terminal</div>
+        </div>
+        <div class="tabs">
+            <ul>
+                <li><a href="../static/chat.html">Home</a></li>
+                <li><a href="../static/news.html">News</a></li>
+                <li><a href="../static/contact.html">Contact</a></li>
+                <li><a href="../static/about.html">About</a></li>
+            </ul>
+        </div>
+        <div class=ticker>
 
-                    <div id="marquee-cont">
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td width="50px" style="background: #656365">
-                                    <button id="ticker-title">Stocks:</button>
-                                </td>
-                                <td id="marquee">
-                                    <marquee onmouseover="this.stop();" onmouseout="this.start();" id='scroll'>
-                                    </marquee>
-                                </td>
-                            </tr>
-                        </table>
+            <div id="marquee-cont">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="50px" style="background: #656365">
+                            <button id="ticker-title">Stocks:</button>
+                        </td>
+                        <td id="marquee">
+                            <marquee onmouseover="this.stop();" onmouseout="this.start();" id='scroll'>
+                            </marquee>
+                        </td>
+                    </tr>
+                </table>
 
 
-                    </div>
-                    <script src="../js/ticker.js"></script>
-                </div>
-                <div class=chat>
-                    <div class="chat-container">
-                        <main class="chat-main">
-
-                            <div class="chat-messages">
-                                <div class="message">
-                                    <p class="meta">Brad <span>9:12pm</span></p>
-                                    <p class="text">
-
-                                    </p>
-                                </div>
-                                <div class="message">
-                                    <p class="meta">Mary <span>9:15pm</span></p>
-                                    <p class="text">
-
-                                    </p>
-                                </div>
-                            </div>
-                        </main>
-
-                    </div>
-                </div>
-                <div class=message-container>
-                    <form id="message-form">
-                        <div class="message">
-                            <input type="text" id="msg" placeholder="Type your message" />
-                        </div>
-                        <div class="send-button">
-                            <button id="send-button">Send >></button>
-                        </div>
-                    </form>
-
-                </div>
             </div>
+            <script src="../js/ticker.js"></script>
+        </div>
+        <div class=chat>
+            <div class="chat-container">
+                <main class="chat-main">
 
+                    <div class="chat-messages">
+                        <div class="message">
+                            <p id="brad" class="meta">Brad <span>9:12pm</span></p>
+                            <p class="text">
 
+                            </p>
+                        </div>
+                        <div class="message">
+                            <p class="meta">Mary <span>9:15pm</span></p>
+                            <p class="text">
 
-        </body>
-        </html>
+                            </p>
+                        </div>
+                    </div>
+                </main>
+
+            </div>
+        </div>
+        <div class=message-container>
+            <form id="message-form">
+                <div class="message">
+                    <input type="text" id="msg" placeholder="Type your message" />
+                </div>
+                <div class="send-button">
+                    <button id="send-button">Send >></button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <script type="module" src="../js/chat.js"></script>
+</body>
+
+                </html>
