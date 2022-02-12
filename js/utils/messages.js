@@ -1,9 +1,30 @@
 //const moment = require('moment');
+var messages = [];
+const LOAD_N_MESSAGES=5;
+
+function logMessage(username, time,  text, room) {
+    const message = { username, time, text, room };
+
+    messages.push(message);
+
+    return message;
+}
+
 
 function formatMessage(username, text) {
+    var time = new Date().toLocaleTimeString('en-US');
+    time = time.substr(0, time.length - 2);
     return {
-        //username, text, time: moment().format('h:mm a')
-        username, text, time: Date.Now()
+        username, text, time: time
+    }
+};
+
+function getMessages() {
+    if (messages.length >= LOAD_N_MESSAGES) {
+        return messages.slice(-1*LOAD_N_MESSAGES)
+    }
+    else {
+        return messages
     }
 }
 
@@ -24,4 +45,4 @@ function getStockPrice() {
     }
 }
 
-module.exports = { formatMessage};
+module.exports = { formatMessage, logMessage, getMessages};

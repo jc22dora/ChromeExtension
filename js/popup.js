@@ -1,5 +1,5 @@
 console.log('popup');
-import { userJoin, getCurrentUser, getUserList, userDisconnect } from  '../js/utils/users.js';
+//import { userJoin, getCurrentUser, getUserList, userDisconnect } from  '../js/utils/users.js';
 document.addEventListener('DOMContentLoaded', documentEvents, false);
 
 chrome.runtime.onMessage.addListener((msg, sender) => {
@@ -17,8 +17,8 @@ function myAction(username, password, room) {
     // do processing with data
     // you need to right click the extension icon and choose "inspect popup"
     // to view the messages appearing on the console.
-    var user = userJoin(1001, msg.username, msg.room);
-    console.log(getUserList());
+    //var user = userJoin(1001, msg.username, msg.room);
+    //console.log(getUserList());
     chrome.runtime.sendMessage({type:'set-login',username:msg.username, password:msg.password,room:msg.room}, response => {
         console.log('loginset request');
     })
