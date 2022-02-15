@@ -3,7 +3,7 @@ const uuid = require('uuid');
 const wss = new WebSocket.Server({ port: 8082 });
 const users = require('../js/utils/users');
 const messages = require('../js/utils/messages');
-
+const refresh = require('../js/utils/refresh');
 wss.on("connection", ws => {
     ws.id = uuid.v4();
     console.log(ws.id + " client connected");
@@ -23,13 +23,17 @@ wss.on("connection", ws => {
             }
             if (msg.subtype === 'client message') {
                 let format = messages.formatMessage(msg.username, msg.text);
-                messages.logMessage(format.username, format.time, format.text, msg.room);
+                console.log(messages.logMessage(ws.id, format.username, format.time, format.text, msg.room));
                 wss.broadcast(format);
                 console.log('server broadcasted message to clients');
             }
             if (msg.subtype === 'load-messages') {
                 msg.messages = messages.getMessages();
-                console.log(msg.messages);
+                ws.send(JSON.stringify(msg));
+            }
+            if (msg.subtype === 'refresh') {
+                msg.html = refresh.getDiv();
+                msg.userhtml = refresh.getUserDiv(users.getUserList());
                 ws.send(JSON.stringify(msg));
             }
 

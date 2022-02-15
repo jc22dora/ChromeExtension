@@ -254,3 +254,9 @@ input:-webkit-autofill {
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
+
+.usersListContainer {
+    overflow-y: scroll;
+    height: 380px;
+    width: 300px;
+}

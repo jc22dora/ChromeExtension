@@ -1,8 +1,9 @@
+
 var users = [];
 
- function userJoin(id, username, room) {
-    const user = { id, username, room };
 
+function userJoin(id, username, room) {
+    const user = { id, username, room };
     users.push(user);
 
     return user;
@@ -30,5 +31,5 @@ function updateUserInfo(id, username, room) {
 }
 
 module.exports = {
-    userJoin, getCurrentUser, getUserList, userDisconnect
+    userJoin, getCurrentUser, getUserList, userDisconnect, updateUserInfo
 };

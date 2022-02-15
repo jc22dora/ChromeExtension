@@ -2,8 +2,8 @@
 var messages = [];
 const LOAD_N_MESSAGES=5;
 
-function logMessage(username, time,  text, room) {
-    const message = { username, time, text, room };
+function logMessage(id, username, time,  text, room) {
+    const message = {id, username, time, text, room };
 
     messages.push(message);
 

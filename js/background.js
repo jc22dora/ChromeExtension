@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener( (msg, sender, sendResponse) => {
         console.log('background set login');
         sendResponse('login-set');
         let tempmsg = {
-            subtype: 'set-login',
+            subtype: 'login-set',
             username: username,
             room: room
         };
@@ -35,6 +35,13 @@ chrome.runtime.onMessage.addListener( (msg, sender, sendResponse) => {
         socket.send(JSON.stringify(tempmsg));
         sendResponse('load-messages request sent');
     }
+    if (msg.type === 'refresh') {
+        let tempmsg = {
+            subtype: 'refresh'
+        }
+        socket.send(JSON.stringify(tempmsg));
+        sendResponse('refresh sent');
+    }
 });
 
 socket.addEventListener("open", () => {
@@ -52,13 +59,18 @@ socket.addEventListener('message', event => {
 
     if (codes.subtype === 'load-messages') {
         let messages = codes.messages;
-        console.log(messages)
         for (let i = 0; i < messages.length; i++) {
             let json = messages[i];
             chrome.runtime.sendMessage({ type: 'message-from-server', username: json["username"], room: json["room"], text: json["text"], time: json["time"] }, (msg) => {
                 console.log(`background.....${msg}`)
             });
         }
+    }
+    else if (codes.subtype === 'refresh') {
+
+        chrome.runtime.sendMessage({ type: 'refresh-payload', html:codes.html,userhtml:codes.userhtml}, (msg) => {
+            console.log(`background.....${msg}`)
+        });
     }
     else {
         let json = codes;
