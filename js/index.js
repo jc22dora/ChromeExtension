@@ -5,7 +5,7 @@ const users = require('../js/utils/users');
 const messages = require('../js/utils/messages');
 const refresh = require('../js/utils/refresh');
 wss.on("connection", ws => {
-    ws.id = uuid.v4();
+    
     console.log(ws.id + " client connected");
 
 
@@ -14,15 +14,17 @@ wss.on("connection", ws => {
         try {
             var msg = JSON.parse(data);
             if (msg.subtype === 'login') {
+                ws.id = uuid.v4();
                 console.log(users.userJoin(ws.id, msg.username, msg.room));
                 console.log(msg.username + "added");
             }
             if (msg.subtype === 'login-set') {
                 users.updateUserInfo(ws.id, msg.username, msg.room);
-                console.log(msg.username + "added");
+                console.log(msg.username + "added"+ws.id);
             }
             if (msg.subtype === 'client message') {
                 let format = messages.formatMessage(msg.username, msg.text);
+                console.log(format);
                 console.log(messages.logMessage(ws.id, format.username, format.time, format.text, msg.room));
                 wss.broadcast(format);
                 console.log('server broadcasted message to clients');

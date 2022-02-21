@@ -55,26 +55,51 @@ function loadMessages() {
     });
 }
 
-function formatMessage(username, text) {
-    //var str = '';
-    //var time = new Date().toLocaleDateString('en-US');
-    //time = time.substr(0, time.length-2);
-    //console.log(time);
-    var timeTwo = new Date().toLocaleTimeString('en-US');
-    timeTwo = timeTwo.substr(0, timeTwo.length - 2);
-    //str = time.concat(timeTwo);
-
-    return {
-        username, text, time:timeTwo
-    }
-};
 function displayMessage(message) {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.innerHTML = ' <p class="meta">' + message.username + '<span>' + message.time + '</span></p><p class="text"> ' +
+    console.log(message)
+    div.innerHTML = ' <p class="meta">' + message.username + '<span>' + message.time + '</span>'+addon(message)+'</p><p class="text"> ' +
         message.text +
         '</p > ';
     document.querySelector('.chat-messages').appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 };
+function addon(message) {
+    try {
+        return addonHtml(message.stock, message.delta)
+    }
+    catch (e) {
+        return ''
+    }
 
+}
+function addonHtml(ticker, delta) {
+    var addonHtml = ''
+    addonHtml += "<span style='color: "; // add span
+    // add color
+    if (delta.substring(0, 1) === "-") {
+        addonHtml += "red;'>";
+    }
+    else {
+        addonHtml += "green;'>";
+    }
+    // add ticker
+    addonHtml += ticker
+    // add arrow
+    if (delta.substring(0, 1) === "+") {
+        addonHtml += "&#9650;";
+    }
+    else {
+        addonHtml += "&#9660;";
+    }
+    // add percent
+    addonHtml += delta.substring(1);
+    // add end span
+    addonHtml += "</span>";
+
+    // add space
+    addonHtml += " ";
+
+    return addonHtml
+}

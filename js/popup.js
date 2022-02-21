@@ -2,6 +2,19 @@ console.log('popup');
 //import { userJoin, getCurrentUser, getUserList, userDisconnect } from  '../js/utils/users.js';
 document.addEventListener('DOMContentLoaded', documentEvents, false);
 
+var globalUser = '';
+var globalPass = '';
+var globalRoom = '';
+
+// send message to background requesting for user info
+// if not null, redirect to chat
+chrome.runtime.sendMessage({ type: 'get-login' }, response => {
+    if (response.username !== undefined && response.room !== undefined) {
+        window.location.assign('../static/chat.html');
+    }
+})
+
+
 chrome.runtime.onMessage.addListener((msg, sender) => {
     if (msg.type === 'login-set') {
         console.log('login set');
@@ -28,10 +41,10 @@ function documentEvents() {
     document.getElementById('submit').addEventListener('click',
         function () {
             event.preventDefault();
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var room = document.getElementById('room').value;
-            myAction(username, password, room);
+            globalUser = document.getElementById('username').value;
+            globalPass = document.getElementById('password').value;
+            globalRoom = document.getElementById('room').value;
+            myAction(globalUser, globalPass, globalRoom);
             window.location.assign('../static/chat.html');
         });
 

@@ -74,7 +74,8 @@ socket.addEventListener('message', event => {
     }
     else {
         let json = codes;
-        chrome.runtime.sendMessage({ type: 'message-from-server', username: json["username"], room: json["room"], text: json["text"], time: json["time"] }, (msg) => {
+        console.log(json);
+        chrome.runtime.sendMessage({ type: 'message-from-server', username: json["username"], room: json["room"], text: json["text"], time: json["time"], stock:json["stock"],delta:json["delta"] }, (msg) => {
             console.log(`background.....${msg}`)
         });
     }
