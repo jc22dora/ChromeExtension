@@ -3,9 +3,10 @@
 <head>
     <title>RobinHood Terminal</title>
     <link rel="stylesheet" href="../static/static.css">
+    <link rel="stylesheet" href="../static/home.css">
 </head>
 <body>
-    
+
 
     <div class=container>
         <div class="title-cont">
@@ -13,10 +14,12 @@
         </div>
         <div class="tabs">
             <ul>
-                <li><a href="../static/chat.html">Home</a></li>
+                <li><a href="../static/home.html">Home</a></li>
+                <li><a href="../static/chat.html">Chat</a></li>
                 <li><a href="../static/news.html">News</a></li>
                 <li><a href="../static/contact.html">Contact</a></li>
                 <li><a href="../static/about.html">About</a></li>
+                <li><a href="../static/about.html">Leave</a></li>
             </ul>
         </div>
         <div class=ticker>
@@ -37,16 +40,17 @@
             <script src="../js/ticker.js"></script>
         </div>
         <div class="usersListContainer">
-            <form id="usersList-form">
-                <button id="refresh" type="submit">refresh</button>
-            </form>
-            <div class="test" id="id">
+            <div class="welcomeQuote">
+                <h2 class="welcomeTitle">Welcome</h2>
+                <p id="divider">-------------------------------</p>
+                <h3 id="welcomeQuote">"Post-hoc Ergo Propter Hoc"</h3>
+                <p class="quoteName"> - Martin Shkreli</p>
+                <p id="divider">-------------------------------</p>
 
             </div>
-            
         </div>
 
-            <script src="../js/news.js"></script>
+        <script src="../js/news.js"></script>
 
 
 
